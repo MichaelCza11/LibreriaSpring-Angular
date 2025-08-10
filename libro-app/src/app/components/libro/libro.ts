@@ -70,7 +70,7 @@ export class LibroComponent implements OnInit {
       this.autores = data;
     });
   }
-  
+
   cargarCategorias(): void{
     this.categoriaService.findAll().subscribe(data=>{
       this.categorias = data;
@@ -78,7 +78,6 @@ export class LibroComponent implements OnInit {
   }
 
   save(): void{
-    this.libroService.findAll().subscribe(data=>{
       this.libro = {} as Libro;
       this.findAll();
     });
@@ -92,7 +91,7 @@ export class LibroComponent implements OnInit {
         this.idEditar = null;
         this.findAll();
       });
-    }     
+    }
   }
 
   delete(): void{
