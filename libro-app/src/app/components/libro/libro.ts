@@ -78,6 +78,7 @@ export class LibroComponent implements OnInit {
   }
 
   save(): void{
+    this.libroService.save(this.libro).subscribe(data=>{
       this.libro = {} as Libro;
       this.findAll();
     });
