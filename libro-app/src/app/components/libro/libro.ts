@@ -13,6 +13,7 @@ import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import { BehaviorSubject } from 'rxjs';
 import { NgForm } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 import { LIVE_ANNOUNCER_DEFAULT_OPTIONS } from '@angular/cdk/a11y';
 
 @Component({
@@ -48,7 +49,8 @@ export class LibroComponent implements OnInit {
     private autorService: AutorService,
     private categoriaService: CategoriaService,
     private dialog: MatDialog,
-    private http: HttpClient
+    private http: HttpClient,
+    private datePipe: DatePipe
   ){}
 
   ngOnInit(): void {
@@ -156,6 +158,12 @@ export class LibroComponent implements OnInit {
   abrirModal(libro?: Libro): void{
     if(libro){
       this.libro = {...libro};
+
+      if(this.libro.fechaPublicacion){
+        this.libro.fechaPublicacion = this.datePipe.transform(
+          this.libro.fechaPublicacion, 'yyyy-MM-dd'
+        ) as any;
+      }
       this.editar = true;
       this.idEditar = libro.idLibro;
   }else{
@@ -198,6 +206,11 @@ subirImagen(): void{
 
 abrirModalDetalles(libro: Libro): void {
   this.libroSeleccionado = libro;
+  if(this.libroSeleccionado.fechaPublicacion){
+        this.libroSeleccionado.fechaPublicacion = this.datePipe.transform(
+          this.libroSeleccionado.fechaPublicacion, 'yyyy-MM-dd'
+        ) as any;
+      }
   this.dialog.open(this.modalDetalles, {
     width: '500px'
   });

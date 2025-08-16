@@ -21,6 +21,7 @@ import {MatSelectModule } from '@angular/material/select';
 import {MatOptionModule, MatNativeDateModule} from '@angular/material/core'
 import {MatDialogModule } from '@angular/material/dialog';
 import {MatDatepickerModule} from '@angular/material/datepicker'
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -47,11 +48,12 @@ import {MatDatepickerModule} from '@angular/material/datepicker'
     MatOptionModule,
     MatDialogModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
-    MatDatepickerModule
+    MatDatepickerModule,
+    DatePipe
   ],
   bootstrap: [App]
 })
