@@ -1,0 +1,2 @@
+export type EstadoPedido = 'CREADO' | 'PAGADO' | 'EN_PREPARACION' | 'ENVIADO' | 'ENTREGADO' | 'CANCELADO';
+export type MetodoPago = 'TARJETA_CREDITO' | 'TRANSFERENCIA' | 'PAYPAL' | 'CONTRA_ENTREGA';
